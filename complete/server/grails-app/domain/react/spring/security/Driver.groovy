@@ -3,7 +3,7 @@ package react.spring.security
 import grails.rest.Resource
 
 @Resource(uri = '/api/driver')
-class Driver {
+class Driver extends User {
 
     String name
 

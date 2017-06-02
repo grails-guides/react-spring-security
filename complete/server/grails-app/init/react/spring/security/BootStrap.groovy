@@ -4,8 +4,13 @@ class BootStrap {
 
     def init = { servletContext ->
         println "Loading database..."
-        def driver1 = new Driver(name: "Susan").save()
-        def driver2 = new Driver(name: "Pedro").save()
+        def driver1 = new Driver(name: "Susan", username: "susan", password: "password1").save()
+        def driver2 = new Driver(name: "Pedro", username:  "pedro", password: "password2").save()
+
+        Role role = new Role(authority: "ROLE_DRIVER").save()
+
+        UserRole.create(driver1, role, true)
+        UserRole.create(driver2, role, true)
 
         def nissan = new Make(name: "Nissan").save()
         def ford = new Make(name: "Ford").save()
