@@ -1,6 +1,6 @@
 import React from 'react';
-import Vehicles from './vehicles';
-import AddVehicleForm from './add-vehicle-form';
+import Vehicles from './Vehicles';
+import AddVehicleForm from './AddVehicleForm';
 import { Row, Jumbotron } from 'react-bootstrap';
 import { SERVER_URL } from './config';
 import 'whatwg-fetch';
