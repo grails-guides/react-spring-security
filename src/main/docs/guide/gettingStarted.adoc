@@ -1,1 +1,3 @@
-In this guide you are going to...
+In this guide you are going to add a very simple version of JWT Token authentication using Spring Security Rest to your React application. To enhance your understanding of the relationship between Spring Security and React this implimentation is done without using the React Router package as that adds another layer of complexity to the application that can distract from the core goal of provide a clear and concise view of the specific technologies in use.
+
+
