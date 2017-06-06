@@ -10,3 +10,4 @@ runningTheApp:
 writingTheSecurity:
   title: Adding Client security
   clientSecurityConfig: Base client security configuration
+  writingAuth: Creating your authentication functions

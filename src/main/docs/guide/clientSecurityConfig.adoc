@@ -2,9 +2,16 @@ At this point we will begin adding the necessary security configuration to the c
 worry as adding this next portion is just the start and security will not actually be enabled
 just yet. We will cover that later when we connect everything up.
 
-Lets begin by adding a `security` directory to `client/src`. Once this has be added we need
-to create 3 files
+Lets begin by adding a `security` and `conf` directory to `client/src`. Once these have be added we need
+to create a few files
+
+Create the following new files in your new `security` directory
 
 - Auth.js
 - Login.js
-- UserForm.js
+
+Create the following new files in your new `conf` directory
+
+- fetchConfig.js
+- responseHandlerConfig.js
+- errorHandlerConfig.js
