@@ -1,7 +1,7 @@
 import Auth from '../security/Auth';
 
-export const checkLoginResponseStatus = (response) => {
-    console.log(`checkLoginResponseStatus: ${response.status}`);
+export const checkResponseStatus = (response) => {
+    console.log(`checkResponseStatus: ${response.status}`);
     if(response.status >= 200 && response.status < 300) {
         return response.json()
     } else {

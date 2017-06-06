@@ -1,0 +1,5 @@
+Good design is always something you should keep in mind even for small example projects like this one as it makes it more
+like second nature when you are working on larger projects in the future. So with that in mind I have chosen to include
+the concept of handlers in this guide as while it is an extra step and most certainly not necessary for such an simple
+application, it is a very simple concept and will exemplify how to write nice clean code and will demonstrate how easily
+handlers can be used to reduce some types of code duplication.

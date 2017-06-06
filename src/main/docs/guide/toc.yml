@@ -7,6 +7,11 @@ writingTheApp:
   installing: Installing Grails
 runningTheApp:
   title: Running the Application
+goodDesign:
+  title: Good Design
+  writingHandlers: Why should you write handlers
+  writingResponseHandlers: Create a default response handler
+  writingErrorHandlers: Create a default error handler
 writingTheSecurity:
   title: Adding Client security
   clientSecurityConfig: Base client security configuration

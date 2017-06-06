@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import Garage from './Garage';
+import Garage from './garage';
 import Auth from './security/Auth';
 import Login from './security/Login';
 import {Grid} from 'react-bootstrap';
-import {restLogin} from "./conf/fetchConfig";
-import {defaultErrorHandler} from './conf/errorHandlerConfig';
-import {checkLoginResponseStatus, loginResponseHandler} from './conf/responseHandlerConfig';
+import {SERVER_URL} from './config';
+import {defaultErrorHandler} from './handlers/errorHandlers';
+import {checkResponseStatus, loginResponseHandler} from './handlers/responseHandlers';
 
 class App extends Component {
 
@@ -45,10 +45,16 @@ class App extends Component {
         console.log('App:login');
         e.preventDefault(); // This line is needed or the error doesn't display and it will not authenticate
 
-        restLogin(this.state.user)
-            .then(checkLoginResponseStatus)
-            .then(response => loginResponseHandler(response, this.customLoginHandler))
-            .catch(error => defaultErrorHandler(error, this.customErrorHandler));
+        fetch(`${SERVER_URL}/api/login`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state.user)
+        }).then(checkResponseStatus)
+          .then(response => loginResponseHandler(response, this.customLoginHandler))
+          .catch(error => defaultErrorHandler(error, this.customErrorHandler));
         console.log('END App:login');
     };
 

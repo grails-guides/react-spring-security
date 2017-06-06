@@ -1,0 +1,13 @@
+Why should I write a handler? Well ... a handler can be used to consolidate logic into a single location
+then used throughout your application. This makes it easy to keep track of where certain types of
+functionality live and allows you to re-use certain pieces of logic.
+
+Lets begin by adding a `handlers` directory to `client/src`. Once this has been added we need
+to create a two files
+
+Create the following new files in your new `handlers` directory
+
+- responseHandlers.js
+- errorHandlers.js
+
+Now that you have created the files lets look at the following two handlers.

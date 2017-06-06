@@ -1,8 +1,8 @@
 import React from 'react';
-import Vehicles from './Vehicles';
+import Vehicles from './vehicles';
 import AddVehicleForm from './AddVehicleForm';
 import { Row, Jumbotron, Button } from 'react-bootstrap';
-import { SERVER_URL } from './conf/generalConfig';
+import { SERVER_URL } from './config';
 import 'whatwg-fetch';
 
 class Garage extends React.Component {
