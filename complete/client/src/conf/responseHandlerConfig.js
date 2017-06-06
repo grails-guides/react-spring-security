@@ -1,6 +1,7 @@
 import Auth from '../security/Auth';
 
 export const checkLoginResponseStatus = (response) => {
+    console.log(`checkLoginResponseStatus: ${response.status}`);
     if(response.status >= 200 && response.status < 300) {
         return response.json()
     } else {
@@ -11,6 +12,7 @@ export const checkLoginResponseStatus = (response) => {
 };
 
 export const loginResponseHandler = (response, handler) => {
+    console.log('loginResponseHandler');
     console.log(response);
     Auth.logIn(response);
 

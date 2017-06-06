@@ -42,12 +42,14 @@ class App extends Component {
     };
 
     login = (e) => {
+        console.log('App:login');
         e.preventDefault(); // This line is needed or the error doesn't display and it will not authenticate
 
         restLogin(this.state.user)
             .then(checkLoginResponseStatus)
-            .then(response => loginResponseHandler(response, this.customLoginHandler()))
-            .catch(error => defaultErrorHandler(error, this.customErrorHandler(error)));
+            .then(response => loginResponseHandler(response, this.customLoginHandler))
+            .catch(error => defaultErrorHandler(error, this.customErrorHandler));
+        console.log('END App:login');
     };
 
     inputChangeHandler = (event) => {
@@ -60,6 +62,7 @@ class App extends Component {
     };
 
     customLoginHandler = () => {
+        console.log('customLoginHandler');
         this.setState({route: 'garage'});
     };
 
@@ -74,17 +77,19 @@ class App extends Component {
     };
 
     contentForRoute() {
-        switch (this.state.route) {
+        const {error, user, route} = this.state
+        console.log('contentForRoute: ' + route);
+        switch (route) {
             case 'login':
-                return <Login error={this.state.error}
-                              user={this.state.user}
+                return <Login error={error}
+                              user={user}
                               changeHandler={this.inputChangeHandler}
                               onSubmit={this.login} />;
             case 'garage':
                 return <Garage logoutHandler={this.logoutHandler}/>;
             default:
-                return <Login error={this.state.error}
-                              user={this.state.user}
+                return <Login error={error}
+                              user={user}
                               changeHandler={this.inputChangeHandler}
                               onSubmit={this.login}/>;
         }

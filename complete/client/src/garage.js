@@ -19,30 +19,31 @@ class Garage extends React.Component {
   }
 
   componentDidMount() {
+      console.log('Garage:componentDidMount');
       console.log(localStorage.auth);
-    fetch(`${SERVER_URL}/api/vehicle`, {
+      fetch(`${SERVER_URL}/api/vehicle`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
         },
-    })
+      })
       .then(r => r.json())
       .then(json => this.setState({vehicles: json}))
       .catch(error => console.error('Error retrieving vehicles: ' + error));
 
-    fetch(`${SERVER_URL}/api/make`, {
+      fetch(`${SERVER_URL}/api/make`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
         },
-    })
+      })
       .then(r => r.json())
       .then(json => this.setState({makes: json}))
       .catch(error => console.error('Error retrieving makes: ' + error));
 
-    fetch(`${SERVER_URL}/api/model`, {
+      fetch(`${SERVER_URL}/api/model`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
