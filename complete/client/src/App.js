@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Garage from './garage';
+import Garage from './Garage';
 import Auth from './security/Auth';
 import Login from './security/Login';
 import {Grid} from 'react-bootstrap';

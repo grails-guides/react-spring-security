@@ -1,5 +1,5 @@
 import React from 'react';
-import Vehicles from './vehicles';
+import Vehicles from './Vehicles';
 import AddVehicleForm from './AddVehicleForm';
 import { Row, Jumbotron, Button } from 'react-bootstrap';
 import { SERVER_URL } from './conf/generalConfig';

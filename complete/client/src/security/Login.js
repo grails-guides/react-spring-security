@@ -1,10 +1,8 @@
 import React from 'react';
 import {Jumbotron, Row, Col, Form, FormGroup, ControlLabel, FormControl, Button} from 'react-bootstrap';
 
-const Login = (props) => {
-    const changeHandler = props.changeHandler;
-    let Error = () => <p className="alert alert-danger">{props.error} </p>;
-    let user = props.user;
+const Login = ({user, error, changeHandler, onSubmit}) => {
+    let Error = () => <p className="alert alert-danger">{error} </p>;
 
     return(
         <Row>
@@ -13,8 +11,8 @@ const Login = (props) => {
             </Jumbotron>
             <Row>
                 <Col sm={4} smOffset={4}>
-                    { props.error ? <Error/> : null }
-                    <Form onSubmit={props.onSubmit} >
+                    { error ? <Error/> : null }
+                    <Form onSubmit={onSubmit} >
                         <FormGroup>
                             <ControlLabel>Login</ControlLabel >
                             <FormControl type='text' name='username' placeholder='Username' value={user.username} onChange={changeHandler} />
