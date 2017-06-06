@@ -1,8 +1,12 @@
-gettingStarted: 
+gettingStarted:
   title: Getting Started
   requirements: What you will need
   howto: How to complete the guide
 writingTheApp:
   title: Writing the Application
+  installing: Installing Grails
 runningTheApp:
   title: Running the Application
+writingTheSecurity:
+  title: Adding Client security
+  clientSecurityConfig: Base client security configuration

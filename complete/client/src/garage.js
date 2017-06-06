@@ -1,8 +1,8 @@
 import React from 'react';
-import Vehicles from './Vehicles';
+import Vehicles from './vehicles';
 import AddVehicleForm from './AddVehicleForm';
-import { Row, Jumbotron } from 'react-bootstrap';
-import { SERVER_URL } from './config';
+import { Row, Jumbotron, Button } from 'react-bootstrap';
+import { SERVER_URL } from './conf/generalConfig';
 import 'whatwg-fetch';
 
 class Garage extends React.Component {
@@ -19,22 +19,47 @@ class Garage extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`${SERVER_URL}/api/vehicle`)
+      console.log(localStorage.auth);
+    fetch(`${SERVER_URL}/api/vehicle`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
+        },
+    })
       .then(r => r.json())
       .then(json => this.setState({vehicles: json}))
       .catch(error => console.error('Error retrieving vehicles: ' + error));
 
-    fetch(`${SERVER_URL}/api/make`)
+    fetch(`${SERVER_URL}/api/make`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
+        },
+    })
       .then(r => r.json())
       .then(json => this.setState({makes: json}))
       .catch(error => console.error('Error retrieving makes: ' + error));
 
-    fetch(`${SERVER_URL}/api/model`)
+    fetch(`${SERVER_URL}/api/model`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
+        },
+    })
       .then(r => r.json())
       .then(json => this.setState({models: json}))
       .catch(error => console.error('Error retrieving models ' + error));
 
-    fetch(`${SERVER_URL}/api/driver`)
+    fetch(`${SERVER_URL}/api/driver`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
+        },
+    })
       .then(r => r.json())
       .then(json => this.setState({drivers: json}))
       .catch(error => console.error('Error retrieving drivers: ' + error));
@@ -63,6 +88,7 @@ class Garage extends React.Component {
     return <Row>
       <Jumbotron>
         <h1>Welcome to the Garage</h1>
+        <Button onClick={this.props.logoutHandler} >Log Out</Button>
       </Jumbotron>
       <Row>
         <AddVehicleForm onSubmit={this.submitNewVehicle} makes={makes} models={models} drivers={drivers}/>

@@ -1,46 +1,104 @@
 import React, {Component} from 'react';
-import Garage from './Garage';
-import Login from './Login';
-import { Grid } from 'react-bootstrap';
+import Garage from './garage';
+import Auth from './security/Auth';
+import Login from './security/Login';
+import {Grid} from 'react-bootstrap';
+import {restLogin} from "./conf/fetchConfig";
+import {defaultErrorHandler} from './conf/errorHandlerConfig';
+import {checkLoginResponseStatus, loginResponseHandler} from './conf/responseHandlerConfig';
 
 class App extends Component {
 
+    constructor() {
+        super();
 
-  constructor() {
-    super();
-
-    this.state = {
-      user: '',
-      route: 'login'
+        this.state = {
+            user: {
+                username: '',
+                password: ''
+            },
+            route: 'login',
+            error: null
+        }
     }
-  }
 
-  componentDidMount() {
-    if(true/*Auth.isLogged()*/) {
-      this.setState({route: 'garage'})
+    /** LifeCycle methods ------------------------------------------------------------------------------------------- */
+    componentDidMount() {
+        if (Auth.loggedIn()) {
+            this.setState({route: 'garage'})
+        }
     }
-  }
+    /** ------------------------------------------------------------------------------------------------------------- */
 
+    reset = () => {
+        this.setState({
+            user: {
+                username: '',
+                password: ''
+            },
+            route: 'login',
+            error: null
+        });
+    };
 
-  contentForRoute() {
-    switch(this.state.route) {
-      case 'login':
-        return <Login />;
-      case 'garage':
-        return <Garage />;
-      default:
-        return <Login />;
-    }
-  }
+    login = (e) => {
+        e.preventDefault(); // This line is needed or the error doesn't display and it will not authenticate
 
-  render() {
+        restLogin(this.state.user)
+            .then(checkLoginResponseStatus)
+            .then(response => loginResponseHandler(response, this.customLoginHandler()))
+            .catch(error => defaultErrorHandler(error, this.customErrorHandler(error)));
+    };
 
-    const content = this.contentForRoute();
+    inputChangeHandler = (event) => {
+        let {user} = this.state;
+        const target = event.target;
 
-    return <Grid>
-      {content}
-    </Grid>
-  };
+        user[target.name] = target.value;
+
+        this.setState({user});
+    };
+
+    customLoginHandler = () => {
+        this.setState({route: 'garage'});
+    };
+
+    customErrorHandler = (error) => {
+        this.reset();
+        this.setState({error: error.message});
+    };
+
+    logoutHandler= () => {
+        Auth.logOut();
+        this.reset();
+    };
+
+    contentForRoute() {
+        switch (this.state.route) {
+            case 'login':
+                return <Login error={this.state.error}
+                              user={this.state.user}
+                              changeHandler={this.inputChangeHandler}
+                              onSubmit={this.login} />;
+            case 'garage':
+                return <Garage logoutHandler={this.logoutHandler}/>;
+            default:
+                return <Login error={this.state.error}
+                              user={this.state.user}
+                              changeHandler={this.inputChangeHandler}
+                              onSubmit={this.login}/>;
+        }
+    };
+
+    render() {
+        const content = this.contentForRoute();
+
+        return (
+            <Grid>
+                {content}
+            </Grid>
+        );
+    };
 }
 
 export default App;
