@@ -1,4 +1,4 @@
-Similarly to our `checkStatusResponse` handler method we know have our `defaultErrorHandler` which can receive an incoming
+Similarly to our `checkStatusResponse` handler method we now have our `defaultErrorHandler` which can receive an incoming
 error along with an additional function.
 
 ----

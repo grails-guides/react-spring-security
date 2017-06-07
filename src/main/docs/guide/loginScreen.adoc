@@ -1,0 +1,74 @@
+Now that we have our core pieces in place the only major thing we are missing is our login screen.
+
+----
+const Login = ({user, error, changeHandler, onSubmit}) => {
+    let Error = () => <p className="alert alert-danger">{error} </p>;  <1>
+
+    return(
+        <Row>
+            <Jumbotron>
+                <h1>Welcome to the Garage</h1>
+            </Jumbotron>
+            <Row>
+                <Col sm={4} smOffset={4}>
+                    { error ? <Error/> : null } <1>
+                    <Form onSubmit={onSubmit} > <2>
+                        <FormGroup>
+                            <ControlLabel>Login</ControlLabel >
+                            <FormControl type='text' name='username' placeholder='Username' value={user.username} onChange={changeHandler} /> <3><4>
+                            <FormControl type='password' name='password' placeholder='Password' value={user.password} onChange={changeHandler} />  <3><4>
+                            <Button type="submit" >Log In</Button> <2>
+                        </FormGroup>
+                    </Form>
+                </Col>
+            </Row>
+        </Row>
+    );
+
+};
+
+export default Login;
+----
+
+Login takes 2 data variables (user, error) and 2 functions (changeHandler, onSubmit).
+
+Our first usage of data is building an html error object to display if our login failed whereas our
+second line using error checks to see if the error exists, if it does we display the error otherwise
+it is null.
+----
+<1>
+let Error = () => <p className="alert alert-danger">{error} </p>;
+
+{ error ? <Error/> : null }
+----
+
+The next usage we are setting the functionality that we want to happen when our login form is submitted.
+The button being of `type="submit"` ties it to our form and when clicked will execute the function that
+has been passed in on the onSubmit argument.
+----
+<2>
+<Form onSubmit={onSubmit} >
+
+<Button type="submit" >Log In</Button>
+----
+
+Now lets look at the use of our second data value user. In order to be able to access the username and
+password fields we set the value of the html objects to our incoming user fields `value={user.username}`
+and `value={user.password}`. At this point we still have an issue as while our value is set we do not
+have anything to capture the change in text when someone types in the fields.
+----
+<3>
+<FormControl type='text' name='username' placeholder='Username' value={user.username} onChange={changeHandler} />
+<FormControl type='password' name='password' placeholder='Password' value={user.password} onChange={changeHandler} />
+----
+
+Enter our final incoming function `changeHandler`. For both input fields we set `onChange={changeHandler}`,
+the incoming function (which we will look at in the next section) will handle updating our user object
+when someone types in our input fields.
+----
+<4>
+<FormControl type='text' name='username' placeholder='Username' value={user.username} onChange={changeHandler} />
+<FormControl type='password' name='password' placeholder='Password' value={user.password} onChange={changeHandler} />
+----
+
+Finally lets look at putting all of this together.

@@ -1,0 +1,34 @@
+First thing lets get our state object built. You should recognize our user and error fields in our state as
+we have used them already in some of our functions, additionally we add a route field that maintains
+our default application path.
+
+----
+constructor() {
+    super();
+
+    this.state = {
+        user: {
+            username: '',
+            password: ''
+        },
+        route: 'login',
+        error: null
+    }
+}
+----
+
+In addition to creating out initial state we will also create a `reset` function so that we can return
+to our initial state later on.
+
+----
+reset = () => {
+    this.setState({
+        user: {
+            username: '',
+            password: ''
+        },
+        route: 'login',
+        error: null
+    });
+};
+----

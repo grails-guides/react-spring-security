@@ -1,0 +1,43 @@
+We dynamically select which route we want to navigate to based off the current value stored in our
+state.route using our `contentForRoute` function which is then called in our render in order to return
+the proper component. Looking at our `contentForRoute` the calls to login should look familiar as here
+is where we are passing in our data and functions.
+
+****
+Note: 1)
+We pull error, user, and route into their own variables for clarity. They could just
+as easily be written this.state.error, this.state.user.
+****
+
+
+
+----
+contentForRoute() {
+    const {error, user, route} = this.state <1>
+    console.log('contentForRoute: ' + route);
+    switch (route) {
+        case 'login':
+            return <Login error={error}
+                          user={user}
+                          changeHandler={this.inputChangeHandler}
+                          onSubmit={this.login} />;
+        case 'garage':
+            return <Garage logoutHandler={this.logoutHandler}/>;
+        default:
+            return <Login error={error}
+                          user={user}
+                          changeHandler={this.inputChangeHandler}
+                          onSubmit={this.login}/>;
+    }
+};
+
+render() {
+    const content = this.contentForRoute();
+
+    return (
+        <Grid>
+            {content}
+        </Grid>
+    );
+};
+----

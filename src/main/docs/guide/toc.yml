@@ -16,3 +16,12 @@ writingTheSecurity:
   title: Adding Client security
   clientSecurityConfig: Base client security configuration
   writingAuth: Creating your authentication functions
+  loginHandler: Additional handler required
+  loginScreen: Stateless Login
+puttingItAllTogether:
+  title: Putting it all together
+  appFile: Connecting the pieces in App.js
+  appState: Creating our state
+  lifecycle: React Lifecycle Methods
+  routing: How to route
+  login: How to login
