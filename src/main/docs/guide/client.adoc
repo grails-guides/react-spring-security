@@ -1,0 +1,7 @@
+While our application is a minimal example of how to connect React to Spring Security it is always
+important to keep good design in mind even with small applications. This will help positive design
+decision to be second nature
+when you are working on larger projects in the future. So with that in mind we have chosen to include
+the concept of handlers in this guide, as while it is an extra step and most certainly not necessary for such an simple
+application, it is a very easy concept and will exemplify how to write nice clean code and will
+demonstrate how handlers can be used to reduce some types of code duplication.

@@ -1,0 +1,16 @@
+Once your second terminal is open run the following
+
+[source,bash]
+----
+cd complete/
+----
+
+Now in the proper location start your front end
+
+[source,bash]
+----
+./gradlew client:bootRun
+----
+This will start the client on port 3000. At this point you should
+be able to navigate to `localhost:3000` and see the home page with a message that reads
+"Welcome to the Garage"

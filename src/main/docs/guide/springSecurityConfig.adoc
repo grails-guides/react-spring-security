@@ -1,0 +1,31 @@
+Now that Spring Security has been added to our application we need to run the basic Spring Security
+configuration. Helpfully this is included in the plugin so make sure you are in the correct location ...
+
+[source,bash]
+----
+cd complete/server
+----
+
+Then execute the following
+
+[source, bash]
+----
+grails s2-quickstart react-spring-security User Role
+----
+
+This should generate the following files
+
+[source, groovy]
+----
+include::{sourceDir}/server/grails-app/domain/react/spring/security/User.groovy[]
+----
+
+[source, groovy]
+----
+include::{sourceDir}/server/grails-app/domain/react/spring/security/Role.groovy[]
+----
+
+[source, groovy]
+----
+include::{sourceDir}/server/grails-app/domain/react/spring/security/UserRole.groovy[]
+----

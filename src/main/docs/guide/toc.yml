@@ -7,8 +7,16 @@ writingTheApp:
   installing: Installing Grails
 runningTheApp:
   title: Running the Application
-goodDesign:
-  title: Good Design
+  runningTheServer: The Server
+  runningTheClient: The Client
+server:
+  title: Building the Server
+  serverDependencies: Dependencies
+  springSecurityConfig: Setup Spring Security
+  bootstrapData: Create User Data
+  appSecurityConfig: Config server to use security
+client:
+  title: Building the Client
   writingHandlers: Why should you write handlers
   writingResponseHandlers: Create a default response handler
   writingErrorHandlers: Create a default error handler

@@ -1,0 +1,1 @@
+Adding Spring Security to the server application is pretty simple so lets start there.

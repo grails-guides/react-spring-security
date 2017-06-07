@@ -1,9 +1,8 @@
 //include::{commondir}/common-runapp.adoc[]
 
-Running this application is a 2 step process, first change into the "complete" directory.
-To run the server application use the `./gradlew server:bootRun` command which will start the
-application on port 8080. While this is starting up, open a second terminal window and navigate
-back to the "complete" directory. Once in the proper location start your front end using
-`./gradlew client:bootRun` which will start the client on port 3000. At this point you should
-be able to navigate to localhost:3000 and see the home page with a message that reads
-"Welcome to the Garage"
+Running this application is a 2 step process, first...
+
+[source,bash]
+----
+cd complete/
+----

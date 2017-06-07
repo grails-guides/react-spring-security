@@ -1,0 +1,9 @@
+Add Spring Security Rest dependency to the project
+
+[source, groovy]
+----
+include::{sourceDir}/server/build.gradle[indent=0,lines=51..52]
+----
+
+NOTE: More information that is specific to the Spring Security Rest plugin can be found here:
+https://alvarosanchez.github.io/grails-spring-security-rest/latest/docs/
