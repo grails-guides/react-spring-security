@@ -1,3 +1,6 @@
+Now we will look at remaining changes neccessary on the client side in order to get security functioning.
+
+----
 import React, {Component} from 'react';
 import Garage from './garage';
 import Auth from './security/Auth';
@@ -113,3 +116,4 @@ class App extends Component {
 }
 
 export default App;
+----

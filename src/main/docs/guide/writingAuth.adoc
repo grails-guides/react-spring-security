@@ -3,6 +3,7 @@ following functions and we will be making use of HTML5's `localStorage` object.
 
 ----
 export default {
+    <1>
     logIn(auth) {
         console.log(`Auth:login: ${auth}`);
         if (auth) {
@@ -10,11 +11,13 @@ export default {
         }
     },
 
+    <2>
     logOut() {
         console.log(`Auth:logOut: ${localStorage.auth}`);
         delete localStorage.auth;
     },
 
+    <3>
     loggedIn() {
         console.log(`Auth:loggedIn?: ${localStorage.auth ? 'true' : 'false'}`);
         return !!localStorage.auth;
@@ -27,6 +30,7 @@ will convert it to a JSON string and store it in our `localStorage` at `localSto
 use.
 [source, react]
 ----
+<1>
 logIn(auth) {
     if (auth) {
         localStorage.auth = JSON.stringify(auth);
@@ -38,6 +42,7 @@ Logout is actually even simpler as it doesn't require any arguments or perform a
 is called we simply remove the data that is stored at `localStorage.auth`.
 [source, react]
 ----
+<2>
 logOut() {
     delete localStorage.auth;
 }
@@ -47,6 +52,7 @@ Finally it might be useful to be able to check if we are logged in. So in this c
 boolean of whether or not auth exists in `localStorage`.
 [source, react]
 ----
+<3>
 loggedIn() {
     return !!localStorage.auth;
 }

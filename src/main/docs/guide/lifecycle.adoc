@@ -1,0 +1,14 @@
+Next we create our react lifecycle method.
+
+----
+componentDidMount() {
+    if (Auth.loggedIn()) {
+        this.setState({route: 'garage'})
+    }
+}
+----
+
+Here we are using a method we created in our `Auth` object to see if we are currently logged in. If we
+are then we set our current route in state to 'garage', if not we leave the route set to 'login'.
+
+Now lets take a look at how we will handle simple routing.
