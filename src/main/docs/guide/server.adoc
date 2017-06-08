@@ -1,1 +1,3 @@
-Adding Spring Security to the server application is pretty simple so lets start there.
+NOTE: The `initial` project is based on the completed project from the http://guides.grails.org/building-a-react-app/guide/index.html[Building a React App] Guide. Please refer to that guide for details on the provided code.
+
+Our first step in adding security to this project is to install the Spring Security plugin/s in our Grails app, and secure our API endpoints.

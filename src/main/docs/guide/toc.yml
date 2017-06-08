@@ -4,22 +4,20 @@ gettingStarted:
   howto: How to complete the guide
 writingTheApp:
   title: Writing the Application
-  installing: Installing Grails
 runningTheApp:
   title: Running the Application
-  runningTheServer: The Server
-  runningTheClient: The Client
 server:
   title: Building the Server
-  serverDependencies: Dependencies
-  springSecurityConfig: Setup Spring Security
-  bootstrapData: Create User Data
-  appSecurityConfig: Config server to use security
+  serverDependencies: Installing Spring Security
+  springSecurityConfig: Configuring Spring Security
+  appSecurityConfig: Securing our API
+  bootstrapData: Updating our Initial Data
+  runningTheSecuredApp: Test-driving our Secured API
 client:
   title: Building the Client
-  writingHandlers: Why should you write handlers
-  writingResponseHandlers: Create a default response handler
-  writingErrorHandlers: Create a default error handler
+  writingHandlers: Writing the Response Handlers
+  writingResponseHandlers: Create a default Response Handler
+  writingErrorHandlers: Create a Default Error Handler
 writingTheSecurity:
   title: Adding Client security
   clientSecurityConfig: Base client security configuration
