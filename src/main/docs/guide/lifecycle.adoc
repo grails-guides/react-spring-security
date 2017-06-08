@@ -1,11 +1,9 @@
 Next we create our react lifecycle method.
 
+[source, javascript]
+.client/src/App.js
 ----
-componentDidMount() {
-    if (Auth.loggedIn()) {
-        this.setState({route: 'garage'})
-    }
-}
+include::{sourceDir}/client/src/App.js[indent=0,lines=26..30]
 ----
 
 Here we are using a method we created in our `Auth` object to see if we are currently logged in. If we

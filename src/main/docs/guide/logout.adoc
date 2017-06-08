@@ -1,0 +1,28 @@
+Now to ensure completeness we want to add the ability to logout as well. As seen above in our
+<<routing>>, when we are routed to the garage we are passing a logoutHandler
+
+[source, javascript]
+.client/src/App.js
+----
+include::{sourceDir}/client/src/App.js[indent=0,lines=96..96]
+----
+
+The logout handler simply calls the `Auth.logOut()` function we wrote earlier which `delete localStorage.auth`.
+and we call `reset()` which resets us to our initial state.
+
+[source, javascript]
+.client/src/App.js
+----
+include::{sourceDir}/client/src/App.js[indent=0,lines=81..84]
+----
+
+Lastly we need to add a logout button.
+
+[source, javascript]
+.client/src/garage.js
+----
+include::{sourceDir}/client/src/garage.js[indent=0,lines=95..95]
+----
+
+Our button is calling our passed in logoutHandler and executing the action.
+At this point you should now be able to successfully logout.

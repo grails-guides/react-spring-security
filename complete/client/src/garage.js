@@ -25,7 +25,7 @@ class Garage extends React.Component {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token //<1>
         },
       })
       .then(r => r.json())
@@ -36,7 +36,7 @@ class Garage extends React.Component {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token //<2>
         },
       })
       .then(r => r.json())
@@ -47,7 +47,7 @@ class Garage extends React.Component {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token //<3>
         },
     })
       .then(r => r.json())
@@ -58,7 +58,7 @@ class Garage extends React.Component {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token //<4>
         },
     })
       .then(r => r.json())
@@ -71,7 +71,10 @@ class Garage extends React.Component {
     console.log('submitNewVehicle...');
     fetch(`${SERVER_URL}/api/vehicle`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + JSON.parse(localStorage.auth).access_token //<5>
+        },
       body: JSON.stringify(vehicle)
     }).then(r => r.json())
       .then(json => {

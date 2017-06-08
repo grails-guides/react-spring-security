@@ -1,0 +1,15 @@
+At this point we have an almost fully functional app and you should be able to login and logout, only
+issue left is when you login, rest calls back to our server are not authenticated yet. If you look in
+your browser console you will see url calls that are throwing a 401 error. To fix this we need to pass
+our authentication token with our calls.
+
+[source, javascript]
+.client/src/garage.js
+----
+include::{sourceDir}/client/src/garage.js[indent=0,lines=21..86]
+----
+
+In order to authenticate our calls we need to add an additional `Authorization` header with a value of
+`'Bearer ' + JSON.parse(localStorage.auth).access_token`. Once added to the calls our app should be fully
+functioning and secured. If you are not already running the application go back to <<runningTheApp>> and start the server
+and client.

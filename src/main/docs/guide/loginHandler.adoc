@@ -1,19 +1,12 @@
-Now that all our independent components are in place we are going to start tying things together a bit.
+Now that all our independent components are in place we are going to start tying things together.
 The first step to connecting our code together will be adding an additional handler for login. This new
 handler will be responsible for actually executing our `Auth.login(response)` that we wrote in the last
 section.
 
+[source, javascript]
+.client/src/handlers/responseHandlers.js
 ----
-import Auth from '../security/Auth';
-
-export const loginResponseHandler = (response, handler) => {
-    Auth.logIn(response);
-
-    if(handler) {
-        console.log('Custom login handler has been called');
-        handler.call();
-    }
-};
+include::{sourceDir}/client/src/handlers/responseHandlers.js[indent=0,lines=14..23]
 ----
 
 The above handler is similar to our `defaultErrorHandler` as it takes in a response and possibly an

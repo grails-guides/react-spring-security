@@ -3,41 +3,16 @@ state.route using our `contentForRoute` function which is then called in our ren
 the proper component. Looking at our `contentForRoute` the calls to login should look familiar as here
 is where we are passing in our data and functions.
 
-****
-Note: 1)
-We pull error, user, and route into their own variables for clarity. They could just
-as easily be written this.state.error, this.state.user.
-****
+NOTE: We pull error, user, and route into their own variables for clarity. They could just
+as easily be written this.state.error, this.state.user, ect...
 
-
-
+[source, javascript]
+.client/src/App.js
 ----
-contentForRoute() {
-    const {error, user, route} = this.state <1>
-    console.log('contentForRoute: ' + route);
-    switch (route) {
-        case 'login':
-            return <Login error={error}
-                          user={user}
-                          changeHandler={this.inputChangeHandler}
-                          onSubmit={this.login} />;
-        case 'garage':
-            return <Garage logoutHandler={this.logoutHandler}/>;
-        default:
-            return <Login error={error}
-                          user={user}
-                          changeHandler={this.inputChangeHandler}
-                          onSubmit={this.login}/>;
-    }
-};
-
-render() {
-    const content = this.contentForRoute();
-
-    return (
-        <Grid>
-            {content}
-        </Grid>
-    );
-};
+include::{sourceDir}/client/src/App.js[indent=0,lines=85..112]
 ----
+
+CAUTION: Make certain to pay attention to how functions are passed. If the function is passed by
+reference `onSubmit={this.login}` the function will execute later when interacted with. If the
+function is passed as `onSubmit={this.login()}` it will execute on the return statement and you could
+have strange or unwanted behavior.

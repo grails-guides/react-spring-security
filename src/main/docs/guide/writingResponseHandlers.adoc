@@ -1,16 +1,10 @@
 Our `checkResponseStatus` handler is responsible for checking the returned http status code and can be
 used anywhere we are using `fetch` to find out which status was returned.
 
+[source, javascript]
+.client/src/handlers/responseHandlers.js
 ----
-export const checkResponseStatus = (response) => {
-    if(response.status >= 200 && response.status < 300) {
-        return response.json()
-    } else {
-        let error = new Error('Incorrect username or password ' + response.statusText);
-        error.response = response;
-        throw error;
-    }
-};
+include::{sourceDir}/client/src/handlers/responseHandlers.js[indent=0,lines=3..12]
 ----
 
 A quick break down of the above function is that it will receive the response from the http call and

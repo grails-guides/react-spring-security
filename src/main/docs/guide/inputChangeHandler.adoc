@@ -1,0 +1,12 @@
+As we mentioned earlier when we added <<loginScreen>>, in order to capture input change we require
+a change handler.
+
+
+[source, javascript]
+.client/src/App.js
+----
+include::{sourceDir}/client/src/App.js[indent=0,lines=62..69]
+----
+
+Our handler can be used for both username and password as our `target` object contains both the field names
+and values.

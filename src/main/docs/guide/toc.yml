@@ -18,16 +18,20 @@ client:
   writingHandlers: Writing the Response Handlers
   writingResponseHandlers: Create a default Response Handler
   writingErrorHandlers: Create a Default Error Handler
+  loginScreen: Stateless Login
 writingTheSecurity:
   title: Adding Client security
   clientSecurityConfig: Base client security configuration
   writingAuth: Creating your authentication functions
   loginHandler: Additional handler required
-  loginScreen: Stateless Login
 puttingItAllTogether:
   title: Putting it all together
-  appFile: Connecting the pieces in App.js
   appState: Creating our state
   lifecycle: React Lifecycle Methods
   routing: How to route
+  inputChangeHandler: Handling change
   login: How to login
+  logout: How to logout
+  garage: Authenticating rest calls
+helpWithGrails:
+  title: Do you need help with Grails?

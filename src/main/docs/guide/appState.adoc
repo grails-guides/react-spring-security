@@ -2,33 +2,18 @@ First thing lets get our state object built. You should recognize our user and e
 we have used them already in some of our functions, additionally we add a route field that maintains
 our default application path.
 
+[source, javascript]
+.client/src/App.js
 ----
-constructor() {
-    super();
-
-    this.state = {
-        user: {
-            username: '',
-            password: ''
-        },
-        route: 'login',
-        error: null
-    }
-}
+include::{sourceDir}/client/src/App.js[indent=0,lines=12..23]
 ----
 
 In addition to creating out initial state we will also create a `reset` function so that we can return
 to our initial state later on.
 
+
+[source, javascript]
+.client/src/App.js
 ----
-reset = () => {
-    this.setState({
-        user: {
-            username: '',
-            password: ''
-        },
-        route: 'login',
-        error: null
-    });
-};
+include::{sourceDir}/client/src/App.js[indent=0,lines=33..42]
 ----
