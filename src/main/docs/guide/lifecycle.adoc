@@ -8,7 +8,7 @@ TIP: See the https://facebook.github.io/react/docs/react-component.html[React do
 include::{sourceDir}/client/src/App.js[indent=0,lines=26..42]
 ----
 
-In `componentDidMount`, we are using the `Auth.isLoggedIn()` function to see whether we're logged in. Because `isLoggedIn` uses a `fetch` call, which is asynchronous, we're using the `async`/`await` keywords to prevent our check from returning before the `fetch` call completes. Assuming that `isLoggedIn` returns true, we set our `route` state variable to 'garage' - otherwise, we leave it set to `login`.
+In `componentDidMount`, we are using the `Auth.isLoggedIn()` function to see whether we're logged in. Because `isLoggedIn` uses a `fetch` call, which is asynchronous, we're using the `async`/`await` keywords to prevent our check from returning before the `fetch` call completes. Assuming that `isLoggedIn` returns true, we set our `route` state variable to 'garage' - otherwise, set it `login`.
 
 We perform a similar check in `componentDidUpdate`, redirecting to the `login` route if we are no longer logged in.
 

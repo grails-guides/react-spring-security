@@ -17,7 +17,7 @@ class App extends Component {
         username: '',
         password: ''
       },
-      route: 'login',
+      route: '',
       error: null
     }
   }
@@ -109,7 +109,7 @@ class App extends Component {
       case 'garage':
         return garageContent;
       default:
-        return loginContent;
+        return <p>Loading...</p>;
     }
   };
 
