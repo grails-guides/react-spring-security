@@ -1,11 +1,15 @@
-At this point we will begin adding the necessary security configuration to the client. Don't
-worry as adding this next portion is just the start and security will not actually be enabled
-just yet. We will cover that later when we connect everything up.
+At this point we will begin adding the security configuration to the React app. Let's begin by creating a `security` directory underneath `client/src`.
 
-Lets begin by adding a `security` directory to `client/src`. Once this has been added we need
-to create a two files
+[source,bash]
+----
+~ cd client/src
+~ mkdir security
+----
 
-Create the following new files in your new `security` directory
+Create a file named `auth.js` in your new `security` directory
 
-- Auth.js
-- Login.js
+[source, bash]
+----
+~ cd security
+~ touch auth.js
+----

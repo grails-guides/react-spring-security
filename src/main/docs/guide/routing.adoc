@@ -1,18 +1,11 @@
-We dynamically select which route we want to navigate to based off the current value stored in our
-state.route using our `contentForRoute` function which is then called in our render in order to return
-the proper component. Looking at our `contentForRoute` the calls to login should look familiar as here
-is where we are passing in our data and functions.
-
-NOTE: We pull error, user, and route into their own variables for clarity. They could just
-as easily be written this.state.error, this.state.user, ect...
+Routing, in single-page applications, gives the user the ability to navigate through your application as though it were made of multiple "pages". In many React apps, the React Router lbirary is used to handle this requirement. However, we will take a simplistic approach for this guide by storing our current "route" in our state, and choosing which component to render based on that variable.
 
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=85..112]
+include::{sourceDir}/client/src/App.js[indent=0,lines=96..114]
 ----
 
-CAUTION: Make certain to pay attention to how functions are passed. If the function is passed by
-reference `onSubmit={this.login}` the function will execute later when interacted with. If the
-function is passed as `onSubmit={this.login()}` it will execute on the return statement and you could
-have strange or unwanted behavior.
+We've created a `contentForRoute` function, which will select the proper component to render based on `this.state.route`. Note that this is where we are passing in our `inputChangeHandler`, `login`, and `logoutHandler` handlers into those components as props.
+
+WARNING: Note how we pass our handler functions as *references* (`onSubmit={this.login}`), not function calls (`onSubmit={this.login()}`). This is because we want our child components to have access to these functions and call them later - we don't want to call them when the component is rendered!

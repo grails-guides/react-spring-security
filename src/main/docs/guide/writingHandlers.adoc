@@ -1,13 +1,17 @@
-Why should I write a handler? Well ... a handler can be used to consolidate logic into a single location
-then used throughout your application. This makes it easy to keep track of where certain types of
-functionality live and allows you to re-use certain pieces of logic.
+In order to implement our authentication we will write several "handler" functions that we can import and reuse throughout our app.
 
-Lets begin by adding a `handlers` directory to `client/src`. Once this has been added we need
-to create a two files
+Let's begin by creating a `handlers` directory under `client/src`.
 
-Create the following new files in your new `handlers` directory
+[source,bash]
+----
+~ cd client/src
+~ mkdir handlers
+----
 
-- responseHandlers.js
-- errorHandlers.js
+Now we are ready to write our first handlers. Create the following two files:
 
-Now that you have created the files lets look at the following two handlers.
+[source, bash]
+----
+~ touch responseHandlers.js
+~ touch errorHandlers.js
+----

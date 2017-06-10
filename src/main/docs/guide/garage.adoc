@@ -1,15 +1,10 @@
-At this point we have an almost fully functional app and you should be able to login and logout, only
-issue left is when you login, rest calls back to our server are not authenticated yet. If you look in
-your browser console you will see url calls that are throwing a 401 error. To fix this we need to pass
-our authentication token with our calls.
+At this point our login and logout functionality is complete. The last step is to authenticate our REST calls back to our API
 
 [source, javascript]
-.client/src/garage.js
+.client/src/Garage.js
 ----
-include::{sourceDir}/client/src/garage.js[indent=0,lines=21..86]
+include::{sourceDir}/client/src/Garage.js[indent=0,lines=22..68]
 ----
+<1> Note the use of the `headers()` function again to return our token-bearing request headers for all of our API calls.
 
-In order to authenticate our calls we need to add an additional `Authorization` header with a value of
-`'Bearer ' + JSON.parse(localStorage.auth).access_token`. Once added to the calls our app should be fully
-functioning and secured. If you are not already running the application go back to <<runningTheApp>> and start the server
-and client.
+Start up the app and verify that you can login and authenticate successfully. Congratulations! You have secured your React app with Grails and Spring Security!

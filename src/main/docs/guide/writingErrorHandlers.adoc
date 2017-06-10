@@ -1,11 +1,10 @@
-Similarly to our `checkStatusResponse` handler method we now have our `defaultErrorHandler` which can receive an incoming
-error along with an additional function.
+Along the same lines as the `checkStatusResponse` function, we'll write a `defaultErrorHandler` which will take a JavaScript error object along with an custom handler (to be called after the default error handling).
 
 [source, javascript]
 .client/src/handlers/errorHandlers.js
 ----
-include::{sourceDir}/client/src/handlers/errorHandlers.js[indent=0]
+include::{sourceDir}/client/src/handlers/errorHandlers.js[]
 ----
 
-`defaultErrorHandler` is pretty simple, if an error is present it will log the error. If an additional function is passed in
-it will then execute that function as well.
+The `defaultErrorHandler` function is quite simple: it logs the error to the console. If an additional handler was passed in the second argument,
+it will then call that function.

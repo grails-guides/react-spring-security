@@ -15,23 +15,22 @@ server:
   runningTheSecuredApp: Test-driving our Secured API
 client:
   title: Building the Client
-  writingHandlers: Writing the Response Handlers
-  writingResponseHandlers: Create a default Response Handler
-  writingErrorHandlers: Create a Default Error Handler
-  loginScreen: Stateless Login
+  loginScreen: Stateless Login Component
 writingTheSecurity:
   title: Adding Client security
-  clientSecurityConfig: Base client security configuration
-  writingAuth: Creating your authentication functions
-  loginHandler: Additional handler required
+  clientSecurityConfig: Creating our Configuration
+  writingAuth: Handling Authentication
+  writingHandlers: Writing the Response Handlers
+  writingResponseHandlers: Creating our Response Handlers
+  writingErrorHandlers: Creating a Default Error Handler
 puttingItAllTogether:
   title: Putting it all together
   appState: Creating our state
   lifecycle: React Lifecycle Methods
-  routing: How to route
-  inputChangeHandler: Handling change
-  login: How to login
-  logout: How to logout
-  garage: Authenticating rest calls
+  routing: Routing
+  inputChangeHandler: Login Form Change Handler
+  login: Handling Login
+  logout: Handling Logout
+  garage: Authenticating our REST Calls
 helpWithGrails:
   title: Do you need help with Grails?

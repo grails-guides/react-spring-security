@@ -1,12 +1,9 @@
-As we mentioned earlier when we added <<loginScreen>>, in order to capture input change we require
-a change handler.
-
+As we discussed while we were creating the `Login` component (see <<loginScreen>>), we need to define a handler function to update our `userDetails` state object when the username/password values are changed.
 
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=62..69]
+include::{sourceDir}/client/src/App.js[indent=0,lines=73..808]
 ----
 
-Our handler can be used for both username and password as our `target` object contains both the field names
-and values.
+Note that we use the same handler for both username and password, as the `name` attributes set on each input can be used to assign the correct variable.

@@ -1,41 +1,33 @@
-Finally lets look at our actual login process and finish connecting everything up. This is the glue to
+Finally, let's look at our actual login process and finish connecting everything up. This is the glue to
 everything we have already done at this point and makes use of our 2 response handlers and our error
 handler as well as using class specific custom handlers to deal with our current state.
 
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=44..59]
+include::{sourceDir}/client/src/App.js[indent=0,lines=57..71]
 ----
 
-<1> First lets
-look out our login function. Our login function takes an event that we call `e.preventDefault();` on.
-The reason we do this is without this call our next call using the fetch api will try to look at the
-client url rather than the server url.
+<1>  We call `e.preventDefault();` to disable the `Login` form's default submit event.
 
-<2> Second we look at the actual fetch call. This is calling back to the Spring Security login end point in
-our server and is passing it our user object (which contains our credentials captured from the login
-screen).
+<2> Using `fetch`, we make a POST request containing the credentials entered by the user via the `Login` form.
 
-<3> Third we are leveraging our `checkResponseStatus` handler to validate that we got a correct response from
-the server.
+<3> We chain the `checkResponseStatus` to our `fetch` call to validate that the request was successful.
 
-<4> Fourth we are using our `loginResponseHandler` to login.
+<4> Assuming success, we add `loginResponseHandler` to the chain to complete the login process.
 
-<5> Fifth in the even we have an error we use our `defaultErrorHandler` to neatly deal with the error.
+<5> Any errors are passed to the `defaultErrorHandler` function, along with our `customErrorHandler`.
 
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=70..78]
+include::{sourceDir}/client/src/App.js[indent=0,lines=81..89]
 ----
 
-Now if you recall when we wrote our handlers we have the ability for them to accept additional handlers.
-These additional handlers are how we deal with being able to set state in one component from another.
-In this case we use our
+Note the use of the "custom" handler functions:
 
-<1> `customLoginHandler` to set our new route on a successful login. If we are not successful then we use
-<2> `customErrorHandler` and we clear our login form data and set the error message.
+1. `customLoginHandler` updates `this.state.route` upon a successful login.
+2.  `customErrorHandler`clears the `userDetails` state variable, and sets an error message.
 
 At this point you should be able to successfully login to the application but there are a few more things
 to do before we are done.

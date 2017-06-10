@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Garage from './garage';
-import Auth from './security/Auth';
-import Login from './security/Login';
+import Garage from './Garage';
+import Auth from './security/auth';
+import Login from './Login';
 import {Grid} from 'react-bootstrap';
 import {SERVER_URL} from './config';
 import {defaultErrorHandler} from './handlers/errorHandlers';
@@ -9,108 +9,119 @@ import {checkResponseStatus, loginResponseHandler} from './handlers/responseHand
 
 class App extends Component {
 
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            user: {
-                username: '',
-                password: ''
-            },
-            route: 'login',
-            error: null
-        }
+    this.state = {
+      userDetails: {
+        username: '',
+        password: ''
+      },
+      route: 'login',
+      error: null
     }
+  }
 
-    /** LifeCycle methods ------------------------------------------------------------------------------------------- */
-    componentDidMount() {
-        if (Auth.loggedIn()) {
-            this.setState({route: 'garage'})
-        }
+  /** LifeCycle methods ------------------------------------------------------------------------------------------- */
+  componentDidMount() {
+    console.log('app mounting...');
+
+    (async () => {
+      if (await Auth.loggedIn()) {
+        this.setState({route: 'garage'})
+      } else {
+        this.setState({route: 'login'});
+      }
+    })();
+  }
+
+  componentDidUpdate() {
+    if (this.state.route !== 'login' && !Auth.loggedIn()) {
+      this.setState({route: 'login'})
     }
-    /** ------------------------------------------------------------------------------------------------------------- */
+  }
 
-    reset = () => {
-        this.setState({
-            user: {
-                username: '',
-                password: ''
-            },
-            route: 'login',
-            error: null
-        });
-    };
+  /** ------------------------------------------------------------------------------------------------------------- */
 
-    login = (e) => {
-        console.log('App:login');
-        // This line is needed or the error doesn't display and it will not authenticate
-        e.preventDefault(); //<1>
+  reset = () => {
+    this.setState({
+      userDetails: {
+        username: '',
+        password: ''
+      },
+      route: 'login',
+      error: null
+    });
+  };
 
-        fetch(`${SERVER_URL}/api/login`, { //<2>
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state.user)
-        }).then(checkResponseStatus) //<3>
-          .then(response => loginResponseHandler(response, this.customLoginHandler)) //<4>
-          .catch(error => defaultErrorHandler(error, this.customErrorHandler)); //<5>
-        console.log('END App:login');
-    };
+  login = (e) => {
+    console.log('login');
+    e.preventDefault(); //<1>
 
-    inputChangeHandler = (event) => {
-        let {user} = this.state;
-        const target = event.target;
+    fetch(`${SERVER_URL}/api/login`, { //<2>
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state.userDetails)
+    }).then(checkResponseStatus) //<3>
+      .then(response => loginResponseHandler(response, this.customLoginHandler)) //<4>
+      .catch(error => defaultErrorHandler(error, this.customErrorHandler)); //<5>
+  };
 
-        user[target.name] = target.value;
+  inputChangeHandler = (event) => {
+    let {userDetails} = this.state;
+    const target = event.target;
 
-        this.setState({user});
-    };
+    userDetails[target.name] = target.value;
 
-    customLoginHandler = () => { //<1>
-        console.log('customLoginHandler');
-        this.setState({route: 'garage'});
-    };
+    this.setState({userDetails});
+  };
 
-    customErrorHandler = (error) => { //<2>
-        this.reset();
-        this.setState({error: error.message});
-    };
+  customLoginHandler = () => { //<1>
+    this.setState({route: 'garage'});
+  };
 
-    logoutHandler= () => {
-        Auth.logOut();
-        this.reset();
-    };
+  customErrorHandler = (error) => { //<2>
+    this.reset();
+    this.setState({error: error.message});
+  };
 
-    contentForRoute() {
-        const {error, user, route} = this.state
-        console.log('contentForRoute: ' + route);
-        switch (route) {
-            case 'login':
-                return <Login error={error}
-                              user={user}
-                              changeHandler={this.inputChangeHandler}
-                              onSubmit={this.login} />;
-            case 'garage':
-                return <Garage logoutHandler={this.logoutHandler}/>;
-            default:
-                return <Login error={error}
-                              user={user}
-                              changeHandler={this.inputChangeHandler}
-                              onSubmit={this.login}/>;
-        }
-    };
+  logoutHandler = () => {
+    Auth.logOut();
+    this.reset();
+  };
 
-    render() {
-        const content = this.contentForRoute();
+  contentForRoute() {
+    const {error, userDetails, route} = this.state;
 
-        return (
-            <Grid>
-                {content}
-            </Grid>
-        );
-    };
+    const loginContent = <Login error={error}
+                                userDetails={userDetails}
+                                inputChangeHandler={this.inputChangeHandler}
+                                onSubmit={this.login}/>;
+
+    const garageContent = <Garage logoutHandler={this.logoutHandler}/>;
+
+    switch (route) {
+      case 'login':
+        return loginContent;
+      case 'garage':
+        return garageContent;
+      default:
+        return loginContent;
+    }
+  };
+
+  render() {
+    const content = this.contentForRoute();
+
+    return (
+      <Grid>
+        {content}
+      </Grid>
+    );
+  };
 }
 
 export default App;
