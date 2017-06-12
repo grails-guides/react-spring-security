@@ -1,15 +1,16 @@
-Let's continue by editing `auth.js`. This file is a "plain" JavaScript file (not a React component), and will contain three functions (`logIn`, `logOut`, and `isLoggedIn`). These functions will be exported as a http://2ality.com/2014/09/es6-modules-final.html["module"], so they can be imported and used in any React component (or JavaScript file).  We will be making use of HTML5's `localStorage` object to store the user's token after a successful login.
+Let's continue by editing `auth.js`. This file is a "plain" JavaScript file (not a React component), and will contain three functions (`logIn`, `logOut`, and `isLoggedIn`). These functions will be exported as a http://2ality.com/2014/09/es6-modules-final.html[*module*], so they can be imported and used in any React component (or JavaScript file).  We will be making use of HTML5's `localStorage` object to store the user's token after a successful login.
 
 [source, javascript]
 .client/src/security/auth.js
 ----
 include::{sourceDir}/client/src/security/auth.js[]
 ----
-
-<1> `logIn` takes in an auth object, converts it into a JSON string, and stores it in our `localStorage` for later use.
+<1> The `export` keyword indicates that this is a JavaScript *module*, which can be imported using the **import** keyword. A single JavaScript file can export multiple modules, so the `default` indicates which module is imported by default (without specifying a particular module).
+<2> `logIn` takes in an auth object, converts it into a JSON string, and stores it in our `localStorage` for later use.
 use.
-<2> `logOut` is  even simpler - we simply remove the object that was stored at `localStorage.auth`.
-<3> `isLoggedIn` returns whether we have an `auth` object in `localStorage`, and in addition verifies that our token is still valid by making a `fetch` request against the secured API and checking the response (in a real-world app, you would probably have a special endpoint for this purpose).
+<3> `logOut` is  even simpler - we simply remove the object that was stored at `localStorage.auth`.
+<4> `isLoggedIn` returns whether we have an `auth` object in `localStorage`, and in addition verifies that our token is still valid by making a `fetch` request against the secured API and checking the response (in a real-world app, you would probably have a special endpoint for this purpose).
+<5> We are using backticks instead of quotes to denote our strings. This is an ES6 syntax called https://developers.google.com/web/updates/2015/01/ES6-Template-Strings["template strings"], and they allow us to write multi-line strings as well as use expressions in our strings with the `${expression}` syntax.
 
 Notice that in our `fetch` call in `isLoggedIn`, we are calling a `headers()` function (imported from `headers.js`). This function will return an object containing our request headers, including the token from `localStorage`. Let's create this function now.
 
@@ -20,8 +21,8 @@ Create a new JavaScript file under `client/src/security`, called `headers.js`.
 ----
 include::{sourceDir}/client/src/security/headers.js[]
 ----
+<1> Again we're exporting a module, but this time the module is itself a function (using the ES6 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions["arrow function"] syntax, which is analogous to a Groovy closure). The function is anonymous, so the name will be whatever variable is used to `import` the module (e.g, `import headers from './headers'`).
 
-The function returns an object with an "Authorization" header, and adds the `access_token` (which is obtained by parsing the `localStorage.auth` JSON object). We will use this function later on when it's time to authenticate our API calls.
-
+The function from the `headers.js` module returns an object with an "Authorization" header, and adds the `access_token` (which is obtained by parsing the `localStorage.auth` JSON object). We will use this function later on when it's time to authenticate our API calls.
 
 Now that we have our client-side authentication in place, let's move on and see how we use it.
