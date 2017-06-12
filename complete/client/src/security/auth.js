@@ -3,18 +3,20 @@ import {checkResponseStatus} from './../handlers/responseHandlers';
 import headers from './../security/headers';
 import 'whatwg-fetch';
 
-
+//<1>
 export default {
-  logIn(auth) { //<1>
+  logIn(auth) { //<2>
     localStorage.auth = JSON.stringify(auth);
   },
 
-  logOut() { //<2>
+  logOut() { //<3>
     delete localStorage.auth;
   },
 
-  loggedIn() {  //<3>
-    return localStorage.auth && fetch(`${SERVER_URL}/api/vehicle`, {headers: headers()})
+  loggedIn() {  //<4>
+    return localStorage.auth && fetch(
+        `${SERVER_URL}/api/vehicle`, //<5>
+        {headers: headers()})
         .then(checkResponseStatus)
         .then(() => { return true })
         .catch(() => { return false });
