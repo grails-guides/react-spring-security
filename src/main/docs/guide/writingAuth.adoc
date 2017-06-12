@@ -1,4 +1,4 @@
-Let's continue by editing auth.js. This file is a "plain" JavaScript file (not a component), and will contain three functions (`logIn`, `logOut`, and `isLoggedIn`). We will be making use of HTML5's `localStorage` object to store the user's token after a successful login.
+Let's continue by editing `auth.js`. This file is a "plain" JavaScript file (not a React component), and will contain three functions (`logIn`, `logOut`, and `isLoggedIn`). These functions will be exported as a http://2ality.com/2014/09/es6-modules-final.html["module"], so they can be imported and used in any React component (or JavaScript file).  We will be making use of HTML5's `localStorage` object to store the user's token after a successful login.
 
 [source, javascript]
 .client/src/security/auth.js
@@ -13,7 +13,7 @@ use.
 
 Notice that in our `fetch` call in `isLoggedIn`, we are calling a `headers()` function (imported from `headers.js`). This function will return an object containing our request headers, including the token from `localStorage`. Let's create this function now.
 
-Create a new JavaScript file under `client/src/security`, called 'headers.js`.
+Create a new JavaScript file under `client/src/security`, called `headers.js`.
 
 [source, javascript]
 .client/src/security/headers.js
