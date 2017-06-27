@@ -1,4 +1,4 @@
-Let's continue by editing `auth.js`. This file is a "plain" JavaScript file (not a React component), and will contain three functions (`logIn`, `logOut`, and `isLoggedIn`). These functions will be exported as a http://2ality.com/2014/09/es6-modules-final.html[*module*], so they can be imported and used in any React component (or JavaScript file).  We will be making use of HTML5's `localStorage` object to store the user's token after a successful login.
+Let's continue by editing `auth.js`. This file is a "plain" JavaScript file (not a React component), and will contain four core authentication-related functions (`logIn`, `logOut`, ``refreshToken`, and `isLoggedIn`). These functions will be exported as a http://2ality.com/2014/09/es6-modules-final.html[*module*], so they can be imported and used in any React component (or JavaScript file).  We will be making use of HTML5's `localStorage` object to store the user's token after a successful login.
 
 [source, javascript]
 .client/src/security/auth.js
@@ -9,8 +9,9 @@ include::{sourceDir}/client/src/security/auth.js[]
 <2> `logIn` takes in an auth object, converts it into a JSON string, and stores it in our `localStorage` for later use.
 use.
 <3> `logOut` is  even simpler - we simply remove the object that was stored at `localStorage.auth`.
-<4> `isLoggedIn` returns whether we have an `auth` object in `localStorage`, and in addition verifies that our token is still valid by making a `fetch` request against the secured API and checking the response (in a real-world app, you would probably have a special endpoint for this purpose).
-<5> We are using backticks instead of quotes to denote our strings. This is an ES6 syntax called https://developers.google.com/web/updates/2015/01/ES6-Template-Strings["template strings"], and they allow us to write multi-line strings as well as use expressions in our strings with the `${expression}` syntax.
+<4> `refreshToken` is the most complex function. It makes a `POST` request against the `/oauth/access_token` endpoint (which is set up by default by Spring Security REST), including the `refresh_token` as a URL parameter. If successful, it will receive the same JWT token response that a normal login would have - in which case we store the new token in our `localStorage` as before (overwriting the earlier one).
+<5> `isLoggedIn` returns whether we have an `auth` object in `localStorage`, and in addition verifies that our token is still valid by making a `fetch` request against the secured API and checking the response (in a real-world app, you would probably have a special endpoint for this purpose). If the `checkResponseStatus` function throws an error, the first `catch` statement is called, which will call the `refreshToken` function described above. If *that* function throws another error, the final `catch` statement will fire and the authentication will fail.
+<6> We are using backticks instead of quotes to denote our strings. This is an ES6 syntax called https://developers.google.com/web/updates/2015/01/ES6-Template-Strings["template strings"], and they allow us to write multi-line strings as well as use expressions in our strings with the `${expression}` syntax.
 
 Notice that in our `fetch` call in `isLoggedIn`, we are calling a `headers()` function (imported from `headers.js`). This function will return an object containing our request headers, including the token from `localStorage`. Let's create this function now.
 
