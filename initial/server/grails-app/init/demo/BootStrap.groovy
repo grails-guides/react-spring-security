@@ -1,9 +1,12 @@
-package react.spring.security
+package demo
 
+import groovy.util.logging.Slf4j
+
+@Slf4j
 class BootStrap {
 
     def init = { servletContext ->
-        println "Loading database..."
+        log.info 'Loading database...'
         def driver1 = new Driver(name: "Susan").save()
         def driver2 = new Driver(name: "Pedro").save()
 

@@ -1,7 +1,9 @@
-package react.spring.security
+package demo
 
+import grails.compiler.GrailsCompileStatic
 import grails.rest.Resource
 
+@GrailsCompileStatic
 @Resource(uri = '/api/driver')
 class Driver {
 
