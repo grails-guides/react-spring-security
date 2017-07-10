@@ -1,9 +1,12 @@
 package demo
 
+import groovy.util.logging.Slf4j
+
+@Slf4j
 class BootStrap {
 
     def init = { servletContext ->
-        println "Loading database..."
+        log.info "Loading database..."
         def driver1 = new Driver(name: "Susan", username: "susan", password: "password1").save() //<1>
         def driver2 = new Driver(name: "Pedro", username:  "pedro", password: "password2").save()
 
