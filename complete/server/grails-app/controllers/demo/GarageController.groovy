@@ -1,4 +1,4 @@
-package react.spring.security
+package demo
 
 import grails.plugin.springsecurity.annotation.Secured
 import groovy.transform.CompileStatic

@@ -1,4 +1,4 @@
-package react.spring.security
+package demo
 
 import grails.core.GrailsApplication
 import grails.util.Environment
