@@ -74,7 +74,9 @@ class Garage extends React.Component {
     return <Row>
       <Jumbotron>
         <h1>Welcome to the Garage</h1>
+        // tag::logoutButton[]
         <Button bsStyle="warning" className="pull-right" onClick={this.props.logoutHandler} >Log Out</Button>
+        // end::logoutButton[]
       </Jumbotron>
       <Row>
         <AddVehicleForm onSubmit={this.submitNewVehicle} makes={makes} models={models} drivers={drivers}/>
