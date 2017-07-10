@@ -1,4 +1,4 @@
-package react.spring.security
+package demo
 
 import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString

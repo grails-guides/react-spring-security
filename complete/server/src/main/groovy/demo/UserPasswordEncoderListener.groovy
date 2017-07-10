@@ -1,5 +1,6 @@
-package react.spring.security
+package demo
 
+import demo.User
 import grails.plugin.springsecurity.SpringSecurityService
 import org.grails.datastore.mapping.core.Datastore
 import org.grails.datastore.mapping.engine.event.AbstractPersistenceEvent

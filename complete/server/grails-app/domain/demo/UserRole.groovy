@@ -1,4 +1,4 @@
-package react.spring.security
+package demo
 
 import grails.gorm.DetachedCriteria
 import groovy.transform.ToString
