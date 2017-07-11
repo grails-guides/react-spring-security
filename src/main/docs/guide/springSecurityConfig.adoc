@@ -22,7 +22,7 @@ This should generate the following domain classes:
 /server/grails-app/domain/demo/UserRole.groovy
 ----
 
-In addition, the `s2-quickstart` has added some extra configuration at `server/grails-app/conf/application.groovy`. Remove `application.groovy. We want to keep all the configuration in a single file. Add the next snippet at the end of `aplication.yml`
+In addition, the `s2-quickstart` has added an extra configuration file at `server/grails-app/conf/application.groovy`. Grails projects support both YML and Groovy configuration, but YML is preferred. Let's remove the `application.groovy` file and add the following snippet at the end of `application.yml`
 
 [source, yml]
 ----
