@@ -1,26 +1,7 @@
-Now to ensure completeness we want to add the ability to logout as well. As seen above in our
-<<routing>>, when we are routed to the garage we are passing a logoutHandler
-
-[source, javascript]
-.client/src/App.js
-----
-include::{sourceDir}/client/src/App.js[indent=0,lines=104..104]
-----
-
 The logout handler simply calls the `Auth.logOut()` function we wrote earlier.  We then call `reset()`, which gets us back our initial state.
 
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=91..94]
+include::{sourceDir}/client/src/App.js[indent=0,tag=logout]
 ----
-
-Lastly, in our `Garage` component, we need to add a logout button:
-
-[source, javascript]
-.client/src/Garage.js
-----
-include::{sourceDir}/client/src/Garage.js[indent=0,tag=logoutButton]
-----
-
-When this button is clicked, React will execute the `logoutHandler` function.

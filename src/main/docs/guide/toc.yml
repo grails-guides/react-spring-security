@@ -27,10 +27,10 @@ puttingItAllTogether:
   title: Putting it all together
   appState: Creating our state
   lifecycle: React Lifecycle Methods
-  routing: Routing
   inputChangeHandler: Login Form Change Handler
   login: Handling Login
   logout: Handling Logout
+  routing: Routing
   garage: Authenticating our REST Calls
 helpWithGrails:
   title: Do you need help with Grails?

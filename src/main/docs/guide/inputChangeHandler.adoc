@@ -3,7 +3,6 @@ As we discussed while we were creating the `Login` component (see <<loginScreen>
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=73..808]
+include::{sourceDir}/client/src/App.js[indent=0,tag=inputChangeHandler]
 ----
-
-Note that we use the same handler for both username and password, as the `name` attributes set on each input can be used to assign the correct variable.
+<1> Note that we will use the same handler for both username and password, as the `name` attributes set on each form input can be used to assign the correct variable.

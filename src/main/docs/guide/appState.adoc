@@ -1,18 +1,10 @@
-First thing, let's build our `App` state object. You should recognize our user and error fields in our state as
+First thing, let's build our `App` state object. This is done in the component constructor. You should recognize our user and error fields in our state as
 we have used them already in some of our functions. In addition, we'll add a `route` variable for use later on.
 
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=12..23]
+include::{sourceDir}/client/src/App.js[indent=0,tag=state]
 ----
-
-In addition to creating our initial state, we will also add a `reset` function so that we can easily return
+<1> We've added a `reset` function so that we can easily return
 to our initial state when needed:
-
-
-[source, javascript]
-.client/src/App.js
-----
-include::{sourceDir}/client/src/App.js[indent=0,lines=46..55]
-----

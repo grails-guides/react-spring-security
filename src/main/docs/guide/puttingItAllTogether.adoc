@@ -6,4 +6,10 @@ Now we can finally wire these pieces together in order to get our client-side se
 * [ ] Provide a way to logout (delete the token from `localStorage`)
 * [ ] Use the token in our REST calls to the API
 
-Please reference the full `App.js` file in the `complete` project as needed - in the sections below we will go piece by piece through this component to complete the above steps.
+For your reference the full `App.js` file is shown below - in the remaining sections  we will go piece by piece through this component (going from top to bottom) and show how to complete the above steps.
+
+[source, javascript]
+.client/src/App.js
+----
+include::{sourceDir}/client/src/App.js[]
+----
