@@ -21,7 +21,7 @@ export default {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         },
-        body: qs.stringify({
+        body: qs.stringify({ //<5>
           grant_type: 'refresh_token',
           refresh_token: JSON.parse(localStorage.auth).refresh_token
         })
@@ -31,9 +31,9 @@ export default {
       .catch(() => { throw new Error("Unable to refresh!")})
   },
 
-  loggedIn() {  //<5>
+  loggedIn() {  //<6>
     return localStorage.auth && fetch(
-        `${SERVER_URL}/api/vehicle`, //<6>
+        `${SERVER_URL}/api/vehicle`, //<7>
         {headers: headers()})
         .then(checkResponseStatus)
         .then(() => { return true })
