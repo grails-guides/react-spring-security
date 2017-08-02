@@ -13,7 +13,7 @@ buildscript {
 }
 
 version "0.1"
-group "react.spring.security"
+group "demo"
 
 apply plugin:"eclipse"
 apply plugin:"idea"

@@ -1,4 +1,4 @@
-To secure our application, we will use the Spring Security Core plugin as well as the Spring Security REST plugin. Install these plugins in the project by adding these lines to `build.gradle` (under the `dependencies` section)`:
+To secure our application, we will use the Spring Security Core plugin as well as the Spring Security REST plugin. Install these plugins in the project by adding these lines to `server/build.gradle` (under the `dependencies` section):
 
 [source, groovy]
 ----

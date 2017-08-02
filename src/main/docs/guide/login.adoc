@@ -1,11 +1,9 @@
-Finally, let's look at our actual login process and finish connecting everything up. This is the glue to
-everything we have already done at this point and makes use of our 2 response handlers and our error
-handler as well as using class specific custom handlers to deal with our current state.
+
 
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=57..71]
+include::{sourceDir}/client/src/App.js[indent=0,tag=login]
 ----
 
 <1>  We call `e.preventDefault();` to disable the `Login` form's default submit event.
@@ -21,7 +19,7 @@ include::{sourceDir}/client/src/App.js[indent=0,lines=57..71]
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=81..89]
+include::{sourceDir}/client/src/App.js[indent=0,tag=handler]
 ----
 
 Note the use of the "custom" handler functions:

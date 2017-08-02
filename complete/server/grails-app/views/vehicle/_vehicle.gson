@@ -1,4 +1,4 @@
-import react.spring.security.Vehicle
+import demo.Vehicle
 
 model {
     Vehicle vehicle

@@ -2,7 +2,7 @@
 grails:
     profile: react
     codegen:
-        defaultPackage: react.spring.security
+        defaultPackage: demo
     spring:
         transactionManagement:
             proxies: false

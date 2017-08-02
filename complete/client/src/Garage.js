@@ -67,14 +67,15 @@ class Garage extends React.Component {
       .catch(ex => console.error('Unable to save vehicle', ex));
   };
 
-
   render() {
     const {vehicles, makes, models, drivers} = this.state;
+    //<2>
+    const logoutButton = <Button bsStyle="warning" className="pull-right" onClick={this.props.logoutHandler} >Log Out</Button>;
 
     return <Row>
       <Jumbotron>
         <h1>Welcome to the Garage</h1>
-        <Button bsStyle="warning" className="pull-right" onClick={this.props.logoutHandler} >Log Out</Button>
+        {logoutButton}
       </Jumbotron>
       <Row>
         <AddVehicleForm onSubmit={this.submitNewVehicle} makes={makes} models={models} drivers={drivers}/>

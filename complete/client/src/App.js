@@ -9,6 +9,7 @@ import {checkResponseStatus, loginResponseHandler} from './handlers/responseHand
 
 class App extends Component {
 
+  //tag::state[]
   constructor() {
     super();
 
@@ -22,7 +23,19 @@ class App extends Component {
     }
   }
 
-  /** LifeCycle methods ------------------------------------------------------------------------------------------- */
+  reset = () => { //<1>
+    this.setState({
+      userDetails: {
+        username: '',
+        password: ''
+      },
+      route: 'login',
+      error: null
+    });
+  };
+  //end::state[]
+
+  //tag::lifecycle[]
   componentDidMount() {
     console.log('app mounting...');
 
@@ -40,20 +53,20 @@ class App extends Component {
       this.setState({route: 'login'})
     }
   }
+  //end::lifecycle[]
 
-  /** ------------------------------------------------------------------------------------------------------------- */
+  //tag::inputChangeHandler[]
+  inputChangeHandler = (event) => {
+    let {userDetails} = this.state;
+    const target = event.target;
 
-  reset = () => {
-    this.setState({
-      userDetails: {
-        username: '',
-        password: ''
-      },
-      route: 'login',
-      error: null
-    });
+    userDetails[target.name] = target.value; //<1>
+
+    this.setState({userDetails});
   };
+  //end::inputChangeHandler[]
 
+  //tag::login[]
   login = (e) => {
     console.log('login');
     e.preventDefault(); //<1>
@@ -69,16 +82,9 @@ class App extends Component {
       .then(response => loginResponseHandler(response, this.customLoginHandler)) //<4>
       .catch(error => defaultErrorHandler(error, this.customErrorHandler)); //<5>
   };
+  //end::login[]
 
-  inputChangeHandler = (event) => {
-    let {userDetails} = this.state;
-    const target = event.target;
-
-    userDetails[target.name] = target.value;
-
-    this.setState({userDetails});
-  };
-
+  //tag::handler[]
   customLoginHandler = () => { //<1>
     this.setState({route: 'garage'});
   };
@@ -87,16 +93,22 @@ class App extends Component {
     this.reset();
     this.setState({error: error.message});
   };
+  //end::handler[]
 
+
+  //tag::logout[]
   logoutHandler = () => {
     Auth.logOut();
     this.reset();
   };
+  //end::logout[]
 
-  contentForRoute() {
+
+  //tag::routing[]
+  contentForRoute() { //<1>
     const {error, userDetails, route} = this.state;
 
-    const loginContent = <Login error={error}
+    const loginContent = <Login error={error} //<2>
                                 userDetails={userDetails}
                                 inputChangeHandler={this.inputChangeHandler}
                                 onSubmit={this.login}/>;
@@ -113,7 +125,7 @@ class App extends Component {
     }
   };
 
-  render() {
+  render() { //<3>
     const content = this.contentForRoute();
 
     return (
@@ -122,6 +134,7 @@ class App extends Component {
       </Grid>
     );
   };
+  //end::routing[]
 }
 
 export default App;

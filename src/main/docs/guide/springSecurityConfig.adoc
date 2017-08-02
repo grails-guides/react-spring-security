@@ -3,30 +3,30 @@ configuration. The plugin provides a `s2-quickstart` command that will generate 
 
 [source,bash]
 ----
-cd complete/server
+cd initial/server
 ----
 
 Then execute the following
 
 [source, bash]
 ----
-grails s2-quickstart react-spring-security User Role
+grails s2-quickstart demo User Role
 ----
 
 This should generate the following domain classes:
 
 [source]
 ----
-/server/grails-app/domain/react/spring/security/User.groovy
-/server/grails-app/domain/react/spring/security/Role.groovy
-/server/grails-app/domain/react/spring/security/UserRole.groovy
+/server/grails-app/domain/demo/User.groovy
+/server/grails-app/domain/demo/Role.groovy
+/server/grails-app/domain/demo/UserRole.groovy
 ----
 
-In addition, the Spring Security Rest plugin has added some extra configuration at `server/grails-app/conf/application.groovy` to configure our stateless filter chain (which will support token-based authentication.
+In addition, the `s2-quickstart` has added an extra configuration file at `server/grails-app/conf/application.groovy`. Grails projects support both YML and Groovy configuration, but YML is preferred. Let's remove the `application.groovy` file and add the following snippet at the end of `application.yml`
 
-[source, groovy]
+[source, yml]
 ----
-include::{sourceDir}/server/grails-app/conf/application.groovy[]
+include::{sourceDir}/server/grails-app/conf/application.yml[tag=ssc]
 ----
 
-Please refer to the Spring Security REST documentation for more details.
+Please refer to the http://alvarosanchez.github.io/grails-spring-security-rest/latest/docs/[Spring Security REST documentation] and https://grails-plugins.github.io/grails-spring-security-core/latest/[Spring Security Core Documentation] for more details.

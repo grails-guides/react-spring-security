@@ -3,9 +3,10 @@ Routing, in Single Page Applications, gives the user the ability to navigate thr
 [source, javascript]
 .client/src/App.js
 ----
-include::{sourceDir}/client/src/App.js[indent=0,lines=96..114]
+include::{sourceDir}/client/src/App.js[indent=0,tag=routing]
 ----
-
-We've created a `contentForRoute` function, which will select the proper component to render based on `this.state.route`. If there is no route set yet, we display a "Loading..." message. Note that this is where we are passing in our `inputChangeHandler`, `login`, and `logoutHandler` handlers into those components as props.
+<1> We've created a `contentForRoute` function, which will select the proper component to render based on `this.state.route`. If there is no route set yet, we display a "Loading..." message.
+<2> Note that this is where we are passing in our `inputChangeHandler`, `login`, and `logoutHandler` handlers into those components as props.
+<3> Finally, in our `render` function, we render out the content that we calculated earlier based on our route.
 
 WARNING: Note how we pass our handler functions as *references* (`onSubmit={this.login}`), not function calls (`onSubmit={this.login()}`). This is because we want our child components to have access to these functions and call them later - we don't want to call them when the component is rendered!
