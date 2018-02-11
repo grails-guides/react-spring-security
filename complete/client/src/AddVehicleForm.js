@@ -1,5 +1,6 @@
 import React from 'react';
 import {Row, Col} from 'react-bootstrap';
+import {array, func} from 'prop-types';
 
 class AddVehicleForm extends React.Component {
 
@@ -97,10 +98,10 @@ class AddVehicleForm extends React.Component {
 }
 
 AddVehicleForm.propTypes = {
-  makes: React.PropTypes.array,
-  models: React.PropTypes.array,
-  drivers: React.PropTypes.array,
-  onSubmit: React.PropTypes.func
+  makes: array,
+  models: array,
+  drivers: array,
+  onSubmit: func
 };
 
 export default AddVehicleForm;

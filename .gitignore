@@ -1,4 +1,6 @@
 build
+node_modules
 .gradle
 .idea
 *.iml
+.DS_Store

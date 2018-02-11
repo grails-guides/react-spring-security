@@ -48,18 +48,16 @@ dependencies {
     compile "org.hibernate:hibernate-core:5.1.5.Final"
     compile "org.grails.plugins:views-json"
     compile "org.grails.plugins:views-json-templates"
-    compile "org.grails.plugins:spring-security-core:3.2.0.M1"
+    compile "org.grails.plugins:spring-security-core:3.2.0"
     compile "org.grails.plugins:spring-security-rest:2.0.0.M2"
     console "org.grails:grails-console"
     profile "org.grails.profiles:react"
     runtime "org.glassfish.web:el-impl:2.1.2-b03"
     runtime "com.h2database:h2"
     runtime "org.apache.tomcat:tomcat-jdbc"
-    testCompile "org.grails:grails-plugin-testing"
-    testCompile "org.grails.plugins:geb"
+    testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.grails:grails-datastore-rest-client"
-    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
-    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    testCompile "org.grails:grails-web-testing-support"
 }
 
 bootRun {
